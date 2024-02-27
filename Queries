@@ -1,2 +1,14 @@
 select name from students where marks>75 order by right(name, 3), ID asc;
 select name from employee where salary > 2000 and months<10 order by employee_id asc;
+
+SELECT CASE WHEN A + B <= C OR A + C <= B OR B + C <= A THEN 'Not A Triangle' WHEN A=B AND B=C THEN 'Equilateral' WHEN A=B OR A=C OR B=C THEN 'Isosceles' ELSE 'Scalene' END FROM TRIANGLES ;
+things to notice SELECT CASE WHEN, THEN, END FROM 
+
+SELECT CONCAT(NAME, '(', LEFT(OCCUPATION, 1), ')') AS formatted_name
+FROM OCCUPATIONS
+ORDER BY NAME;
+
+SELECT CONCAT('There are a total of ', COUNT(OCCUPATION), ' ', LOWER(OCCUPATION), 's.') AS occupation_count
+FROM OCCUPATIONS
+GROUP BY OCCUPATION
+ORDER BY COUNT(OCCUPATION);
