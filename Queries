@@ -15,3 +15,6 @@ ORDER BY COUNT(OCCUPATION);
 
 select sum(city.population) from city inner join country on city.countrycode = country.code 
 where country.continent = 'Asia';
+
+select country.continent, floor(avg(city.population)) from country inner join city on city.countrycode=country.code group by country.continent;
+here we used group by bcz we used aggregate func (AVG) in the query
