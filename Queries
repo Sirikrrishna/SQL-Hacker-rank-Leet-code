@@ -18,3 +18,7 @@ where country.continent = 'Asia';
 
 select country.continent, floor(avg(city.population)) from country inner join city on city.countrycode=country.code group by country.continent;
 here we used group by bcz we used aggregate func (AVG) in the query
+
+select * from course
+where course# in (select course# from section)
+
