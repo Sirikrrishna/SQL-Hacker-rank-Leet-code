@@ -71,3 +71,8 @@ LIMIT 10;
 SELECT DISTINCT year,song_name
 FROM billboard_top_100_year_end
 WHERE year >= YEAR(CURRENT_DATE) - 20 AND year_rank = 1;
+
+8) Find artists with the highest number of top 10 ranked songs over the years
+select artist , count(*) as number_of_top_10_rankings from spotify_worldwide_daily_song_ranking
+where position <= 10
+group by artist
