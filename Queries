@@ -22,3 +22,41 @@ here we used group by bcz we used aggregate func (AVG) in the query
 select * from course
 where course# in (select course# from section)
 
+SELECT artist_name, SUM(streams) AS total_streams, RANK() OVER (ORDER BY SUM(streams) DESC) AS artist_rank
+FROM 
+    spotify_streams
+GROUP BY 
+    artist_name
+ORDER BY 
+    total_streams DESC;
+
+1)AGGREGATE LISTENING DATA
+SELECT 
+    user_id,
+    ROUND(SUM(listen_duration) / 60) AS total_listen_duration,
+    COUNT(DISTINCT song_id) AS unique_song_count
+FROM 
+    listening_habits
+GROUP BY 
+    user_id;
+
+2)TOP RANKED SONGS FROM PAST 20 YEARS
+SELECT DISTINCT
+    year,song_name
+FROM
+    billboard_top_100_year_end
+WHERE
+    year >= YEAR(CURRENT_DATE) - 20
+    AND year_rank = 1;
+
+3)SONGS RANKED BETWEEN 8 TO 10
+select trackname, position from spotify_worldwide_daily_song_ranking
+where position between 8 and 10
+order by position asc;
+
+4) Total number of streams for the top 100 ranked songs
+select sum(streams) as total_no_of_streams from spotify_worldwide_daily_song_ranking
+where position >= 100
+
+5)average number of streams across all songs
+select avg(streams) as avg_no_of_streams from spotify_worldwide_daily_song_ranking;
