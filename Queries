@@ -60,3 +60,9 @@ where position >= 100
 
 5)average number of streams across all songs
 select avg(streams) as avg_no_of_streams from spotify_worldwide_daily_song_ranking;
+
+6)Find the top 10 ranked songs by position. Output the track name along with the corresponding position and sort records by the position in descending order and track name alphabetically
+SELECT position,trackname
+FROM  spotify_worldwide_daily_song_ranking
+ORDER BY position DESC, trackname ASC
+LIMIT 10;
