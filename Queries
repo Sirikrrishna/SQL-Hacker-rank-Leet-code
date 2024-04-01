@@ -66,3 +66,8 @@ SELECT position,trackname
 FROM  spotify_worldwide_daily_song_ranking
 ORDER BY position DESC, trackname ASC
 LIMIT 10;
+
+7) LIST OF SONGS THAT STAYED ATLEAST TOP 1 IN 20 YEARS
+SELECT DISTINCT year,song_name
+FROM billboard_top_100_year_end
+WHERE year >= YEAR(CURRENT_DATE) - 20 AND year_rank = 1;
